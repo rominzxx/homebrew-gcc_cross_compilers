@@ -2,9 +2,9 @@ require 'formula'
 
 class I386JosElfGcc < Formula
   homepage 'http://gcc.gnu.org'
-  url "https://ftp.gnu.org/gnu/gcc/gcc-7.2.0/gcc-7.2.0.tar.bz2"
+  url "https://ftp.gnu.org/gnu/gcc/gcc-7.2.0/gcc-7.2.0.tar.gz"
+  
   depends_on "gmp"
-
   depends_on "libmpc"
   depends_on "mpfr"
   depends_on "isl"
@@ -21,11 +21,11 @@ class I386JosElfGcc < Formula
     ENV['PATH'] += ":#{binutils.prefix/"bin"}"
 
     mkdir 'build' do
-      system '../configure', '--target=i386-jos-elf',
-                             '--disable-werror',
-                             '--disable-libssp',
-                             '--disable-libmudflap', 
-                             '--with-newlib',
+      system '../configure', "--target=i386-jos-elf",
+                             "--disable-werror",
+                             "--disable-libssp",
+                             "--disable-libmudflap", 
+                             "--with-newlib",
                              "--prefix=#{prefix}",
                              "--enable-languages=c",
                              "--without-headers",
